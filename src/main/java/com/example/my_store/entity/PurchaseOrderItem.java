@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table
+@Table (name = "purchase_order_item")
 public class PurchaseOrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,9 +37,11 @@ public class PurchaseOrderItem {
     public BigDecimal getUnitPrice() {return unitPrice;}
     public void setUnitPrice(BigDecimal unitPrice) {this.unitPrice = unitPrice;}
 
-    public Long getId() {return id;}
-
     public Product getProduct() {return product;}
+    public void setProduct(Product product) {this.product = product;}
 
     public PurchaseOrder getPurchaseOrder() {return purchaseOrder;}
+    public void setPurchaseOrder(PurchaseOrder purchaseOrder) {this.purchaseOrder = purchaseOrder;}
+
+    public Long getId() {return id;}
 }

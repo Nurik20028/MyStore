@@ -45,6 +45,18 @@ public class PurchaseOrder {
     public Long getId() {return id;}
 
     public Supplier getSupplier() {return supplier;}
+    public void setSupplier(Supplier supplier) {this.supplier = supplier;}
 
     public List<PurchaseOrderItem> getPurchaseOrderItems() {return purchaseOrderItems;}
+
+
+    public void addPurchaseOrderItem(PurchaseOrderItem purchaseOrderItem){
+        purchaseOrderItems.add(purchaseOrderItem);
+        purchaseOrderItem.setPurchaseOrder(this);
+    }
+
+    public void removePurchaseOrderItem(PurchaseOrderItem purchaseOrderItem){
+        purchaseOrderItems.remove(purchaseOrderItem);
+        purchaseOrderItem.setPurchaseOrder(this);
+    }
 }

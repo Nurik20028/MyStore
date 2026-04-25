@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +24,14 @@ public class Category {
     public Long getId() {return id;}
 
     public List<Product> getProducts() {return products;}
+
+
+    public void addProduct(Product product){
+        products.add(product);
+        product.setCategory(this);
+    }
+    public void removeProduct(Product product){
+        products.remove(product);
+        product.setCategory(null);
+    }
 }

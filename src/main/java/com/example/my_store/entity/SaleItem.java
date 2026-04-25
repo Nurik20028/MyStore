@@ -4,7 +4,7 @@ package com.example.my_store.entity;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 
-@Table
+@Table(name = "sale_item")
 @Entity
 public class SaleItem {
     @Id
@@ -40,6 +40,8 @@ public class SaleItem {
     public Long getId() {return id;}
 
     public Product getProduct() {return product;}
+    public void setProduct(Product product) {this.product = product;}
 
     public Sale getSale() {return sale;}
+    public void setSale(Sale sale) {this.sale = sale;}
 }

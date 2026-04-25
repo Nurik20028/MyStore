@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table
+@Table(name = "product")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,10 +53,17 @@ public class Product {
     public Long getId() {return id;}
 
     public Category getCategory() {return category;}
+    public void setCategory(Category category) {this.category = category;}
 
     public List<PurchaseOrderItem> getPurchaseOrderItems() {return purchaseOrderItems;}
 
     public Stock getStock() {return stock;}
+    public void setStock(Stock stock) {
+        if (stock != null) {
+            stock.setProduct(this); // Автоматически привязываем Stock к этому Product
+        }
+        this.stock = stock;
+    }
 
     public List<SaleItem> getSaleItems() {return saleItems;}
 }

@@ -11,7 +11,7 @@ import com.example.my_store.entity.enums.SaleStatus;
 import com.example.my_store.entity.enums.SalePaymentype;
 
 @Entity
-@Table
+@Table(name = "sale")
 public class Sale {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,9 +23,11 @@ public class Sale {
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private SaleStatus status;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "payment_type", nullable = false)
     private SalePaymentype paymentType;
 
@@ -57,4 +59,16 @@ public class Sale {
     public Long getId() {return id;}
 
     public List<SaleItem> getSaleItems() {return saleItems;}
+
+    public List<CustomerTransaction> getCustomerTransactions() {return customerTransactions;}
+
+
+    public void addSaleItem(SaleItem saleItem){
+        saleItems.add(saleItem);
+        saleItem.setSale(this);
+    }
+    public void removeSaleItem(SaleItem saleItem){
+        saleItems.remove(saleItem);
+        saleItem.setSale(null);
+    }
 }
