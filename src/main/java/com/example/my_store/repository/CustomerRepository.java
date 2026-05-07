@@ -6,8 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-    List<Customer> findByBalanceLassThan(BigDecimal balance);
+    List<Customer> findByBalanceLessThan(BigDecimal balance);
 }

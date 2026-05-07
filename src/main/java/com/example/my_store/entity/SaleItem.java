@@ -11,13 +11,13 @@ public class SaleItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "cost_price") // цена закупки
+    @Column(name = "cost_price") // цена закупки - наверное я это оставил для дальнейшего анализа продаж и покупок, на чеке это не отобразится
     private BigDecimal costPrice;
 
     @Column(name = "selling_price") // цена продажи
     private BigDecimal sellPrice;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity")
     private BigDecimal quantity;
 
     @ManyToOne
@@ -27,6 +27,8 @@ public class SaleItem {
     @ManyToOne
     @JoinColumn(name = "sale_id")
     private Sale sale;
+
+    private boolean isRady;
 
     public BigDecimal getCostPrice() {return costPrice;}
     public void setCostPrice(BigDecimal costPrice) {this.costPrice = costPrice;}
@@ -44,4 +46,7 @@ public class SaleItem {
 
     public Sale getSale() {return sale;}
     public void setSale(Sale sale) {this.sale = sale;}
+
+    public boolean isRady() {return isRady;}
+    public void setRady(boolean rady) {isRady = rady;}
 }
